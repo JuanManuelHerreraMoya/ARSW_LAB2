@@ -1,0 +1,13 @@
+Diseñe un sistema para compartir fotos como Instagram, en donde
+los usuarios pueden, cargar fotos, compartirlas 
+con amigos y seguir a otros usuarios.:
+
+	-Determinaria los lenguajes , la tecnologia que se usaran
+	-Determinar los motores de bases de datos que se usaran
+	-Determinar los servidores que se usara, como se usaran,etc...
+	-Determinar patrones que faciliten la situacion o la ejecucion de la 
+	estructura que se genere.
+	-Ser capaz de soportar un numero grande de usuarios al tiempo sin tener 
+	interferencia en lo que esten haciendo 
+	-Tener la capacidad de compartir, eliminar y editar fotos.
+	

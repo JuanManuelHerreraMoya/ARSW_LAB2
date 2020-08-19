@@ -1,6 +1,7 @@
 # ARSW_LAB2
 
-##JAVA IMMORTALS
+### JAVA IMMORTALS
+
 Este laboratorio tiene como fin que el estudiante conozca y aplique conceptos propios de la programación concurrente, además de estrategias que eviten condiciones de carrera.
 Part I - Before finishing class
 Thread control with wait/notify. Producer/consumer

@@ -3,7 +3,9 @@
 ### JAVA IMMORTALS
 
 Este laboratorio tiene como fin que el estudiante conozca y aplique conceptos propios de la programación concurrente, además de estrategias que eviten condiciones de carrera.
+
 Part I - Before finishing class
+
 Thread control with wait/notify. Producer/consumer
 
 Check the operation of the program and run it. While this occurs, run jVisualVM and check the CPU consumption of the corresponding process. Why is this consumption? Which is the responsible class? 

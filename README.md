@@ -16,52 +16,41 @@ Make the producer now produce very fast, and the consumer consumes slow. Taking 
 
 ![run](imagenes/BajoRendimientoCPU_produceR.jpg)
 
-Part II
-Synchronization and Dead-Locks.
+_______________________________________________________________________________________________________________
+
+## Part II-Synchronization and Dead-Locks.
 
 
 Imortal
 Review the “highlander-simulator” program, provided in the edu.eci.arsw.highlandersim package. This is a game in which:
 
-You have N immortal players. 
+2- Review the code and identify how the functionality indicated above was implemented. Given the intention of the game, an invariant should be that the sum of the life points of all players is always the same (of course, in an instant of time in which a time increase / reduction operation is not in process ). For this case, for N players, what should this value be?
 
-Each player knows the remaining N-1 player.
+3- Run the application and verify how the ‘pause and check’ option works. Is the invariant fulfilled?
 
- Each player permanently attacks some other immortal. The one who first attacks subtracts M life points from his opponent, and increases his own life points by the same amount. 
+4- A first hypothesis that the race condition for this function (pause and check) is presented is that the program consults the list whose values ​​it will print, while other threads modify their values. To correct this, do whatever is necessary so that, before printing the current results, all other threads are paused. Additionally, implement the ‘resume’ option.
 
-The game could never have a single winner. Most likely, in the end there are only two left, fighting indefinitely by removing and adding life points. 
+5- Check the operation again (click the button many times). Is the invariant fulfilled or not ?.
 
-Review the code and identify how the functionality indicated above was implemented. Given the intention of the game, an invariant should be that the sum of the life points of all players is always the same (of course, in an instant of time in which a time increase / reduction operation is not in process ). For this case, for N players, what should this value be?
+6- Identify possible critical regions in regards to the fight of the immortals. Implement a blocking strategy that avoids race conditions. Remember that if you need to use two or more ‘locks’ simultaneously, you can use nested synchronized blocks:
 
-Run the application and verify how the ‘pause and check’ option works. Is the invariant fulfilled?
+7- After implementing your strategy, start running your program, and pay attention to whether it comes to a halt. If so, use the jps and jstack programs to identify why the program stopped.
 
-A first hypothesis that the race condition for this function (pause and check) is presented is that the program consults the list whose values ​​it will print, while other threads modify their values. To correct this, do whatever is necessary so that, before printing the current results, all other threads are paused. Additionally, implement the ‘resume’ option.
+8 -Consider a strategy to correct the problem identified above (you can review Chapter 15 of Java Concurrency in Practice again).
 
-Check the operation again (click the button many times). Is the invariant fulfilled or not ?.
+9- Once the problem is corrected, rectify that the program continues to function consistently when 100, 1000 or 10000 immortals are executed. If in these large cases the invariant begins to be breached again, you must analyze what was done in step 4.
 
-Identify possible critical regions in regards to the fight of the immortals. Implement a blocking strategy that avoids race conditions. Remember that if you need to use two or more ‘locks’ simultaneously, you can use nested synchronized blocks:
+10- An annoying element for the simulation is that at a certain point in it there are few living 'immortals' making failed fights with 'immortals' already dead. It is necessary to suppress the immortal dead of the simulation as they die. 
 
-After implementing your strategy, start running your program, and pay attention to whether it comes to a halt. If so, use the jps and jstack programs to identify why the program stopped.
+11- Analyzing the simulation operation scheme, could this create a race condition? Implement the functionality, run the simulation and see what problem arises when there are many 'immortals' in it. Write your conclusions about it in the file ANSWERS.txt. 
 
-Consider a strategy to correct the problem identified above (you can review Chapter 15 of Java Concurrency in Practice again).
+12- Correct the previous problem WITHOUT using synchronization, since making access to the shared list of immortals sequential would make simulation extremely slow. 
 
-Once the problem is corrected, rectify that the program continues to function consistently when 100, 1000 or 10000 immortals are executed. If in these large cases the invariant begins to be breached again, you must analyze what was done in step 4.
+13- To finish, implement the STOP option.
 
-An annoying element for the simulation is that at a certain point in it there are few living 'immortals' making failed fights with 'immortals' already dead. It is necessary to suppress the immortal dead of the simulation as they die. 
+_____________________________________________________________________
 
-Analyzing the simulation operation scheme, could this create a race condition? Implement the functionality, run the simulation and see what problem arises when there are many 'immortals' in it. Write your conclusions about it in the file ANSWERS.txt. 
-
-Correct the previous problem WITHOUT using synchronization, since making access to the shared list of immortals sequential would make simulation extremely slow. 
-
-To finish, implement the STOP option.
-
-Step 6
-synchronized(locka){
-	synchronized(lockb){
-		…
-	}
-}
-Grade Criteria
+## Grade Criteria
 The deliver of this workshop should be a link to GitHub repository where the README file contains all the answers (you can use images to support your solution development) and the source code is the solution.
 
 The README file should contains:

@@ -87,18 +87,21 @@ public class ControlFrame extends JFrame {
         JButton btnPauseAndCheck = new JButton("Pause and check");
         btnPauseAndCheck.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                /*
-				 * COMPLETAR
-                 */
                 int sum = 0;
-                for (Immortal im : immortals) {
-                    sum += im.getHealth();
-                }
+                synchronized (immortals){
+                    for (Immortal im:immortals){
+                        im.pausarPelea();
+                    }
 
+                    for (Immortal im : immortals) {
+                        System.out.println("Entre y suma es: "+ sum);
+                        sum += im.getHealth();
+                    }
+                    immortals.notifyAll();
+                }
                 statisticsLabel.setText("<html>"+immortals.toString()+"<br>Health sum:"+ sum);
-                
-                
+                System.out.println("La vida total es:  "+sum);
+
 
             }
         });
@@ -165,7 +168,7 @@ public class ControlFrame extends JFrame {
 
 }
 
-class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback{
+class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback {
 
     JTextArea ta;
     JScrollPane jsp;
@@ -173,21 +176,21 @@ class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback{
     public TextAreaUpdateReportCallback(JTextArea ta,JScrollPane jsp) {
         this.ta = ta;
         this.jsp=jsp;
-    }       
-    
+    }
+
     @Override
     public void processReport(String report) {
         ta.append(report);
 
         //move scrollbar to the bottom
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                JScrollBar bar = jsp.getVerticalScrollBar();
-                bar.setValue(bar.getMaximum());
-            }
-        }
+                                                   public void run() {
+                                                       JScrollBar bar = jsp.getVerticalScrollBar();
+                                                       bar.setValue(bar.getMaximum());
+                                                   }
+                                               }
         );
 
     }
-    
+
 }

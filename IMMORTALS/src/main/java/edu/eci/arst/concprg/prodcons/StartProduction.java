@@ -5,6 +5,9 @@
  */
 package edu.eci.arst.concprg.prodcons;
 
+import edu.eci.arsw.highlandersim.ImmortalUpdateReportCallback;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -30,3 +33,5 @@ public class StartProduction {
         new Consumer(queue).start();
     }
 }
+
+

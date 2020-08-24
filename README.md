@@ -28,7 +28,7 @@ Review the “highlander-simulator” program, provided in the edu.eci.arsw.high
 
 3- Run the application and verify how the ‘pause and check’ option works. Is the invariant fulfilled?
 
-4- A first hypothesis that the race condition for this function (pause and check) is presented is that the program consults the list whose values ​​it will print, while other threads modify their values. To correct this, do whatever is necessary so that, before printing the current results, all other threads are paused. Additionally, implement the ‘resume’ option.
+A first hypothesis that the race condition for this function (pause and check) is presented is that the program consults the list whose values ​​it will print, while other threads modify their values. To correct this, do whatever is necessary so that, before printing the current results, all other threads are paused. Additionally, implement the ‘resume’ option.
 
 ![run](imagenes/pararTodo1.jpg)
 
@@ -36,21 +36,13 @@ Review the “highlander-simulator” program, provided in the edu.eci.arsw.high
 
 ![run](imagenes/pararTodo3.jpg)
 
-5- Check the operation again (click the button many times). Is the invariant fulfilled or not ?.
 
-6- Identify possible critical regions in regards to the fight of the immortals. Implement a blocking strategy that avoids race conditions. Remember that if you need to use two or more ‘locks’ simultaneously, you can use nested synchronized blocks:
+Once the problem is corrected, rectify that the program continues to function consistently when 100, 1000 or 10000 immortals are executed. If in these large cases the invariant begins to be breached again, you must analyze what was done in step 4.
 
-7- After implementing your strategy, start running your program, and pay attention to whether it comes to a halt. If so, use the jps and jstack programs to identify why the program stopped.
+![run](imagenes/1000Jugadores.jpg)
 
-8 -Consider a strategy to correct the problem identified above (you can review Chapter 15 of Java Concurrency in Practice again).
+![run](imagenes/10000Jugadores.jpg)
 
-9- Once the problem is corrected, rectify that the program continues to function consistently when 100, 1000 or 10000 immortals are executed. If in these large cases the invariant begins to be breached again, you must analyze what was done in step 4.
-
-10- An annoying element for the simulation is that at a certain point in it there are few living 'immortals' making failed fights with 'immortals' already dead. It is necessary to suppress the immortal dead of the simulation as they die. 
-
-11- Analyzing the simulation operation scheme, could this create a race condition? Implement the functionality, run the simulation and see what problem arises when there are many 'immortals' in it. Write your conclusions about it in the file ANSWERS.txt. 
-
-12- Correct the previous problem WITHOUT using synchronization, since making access to the shared list of immortals sequential would make simulation extremely slow. 
 
 13- To finish, implement the STOP option.
 

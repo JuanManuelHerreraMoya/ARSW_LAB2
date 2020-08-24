@@ -30,6 +30,12 @@ Review the “highlander-simulator” program, provided in the edu.eci.arsw.high
 
 4- A first hypothesis that the race condition for this function (pause and check) is presented is that the program consults the list whose values ​​it will print, while other threads modify their values. To correct this, do whatever is necessary so that, before printing the current results, all other threads are paused. Additionally, implement the ‘resume’ option.
 
+![run](imagenes/pararTodo1.jpg)
+
+![run](imagenes/pararTodo2.jpg)
+
+![run](imagenes/pararTodo3.jpg)
+
 5- Check the operation again (click the button many times). Is the invariant fulfilled or not ?.
 
 6- Identify possible critical regions in regards to the fight of the immortals. Implement a blocking strategy that avoids race conditions. Remember that if you need to use two or more ‘locks’ simultaneously, you can use nested synchronized blocks:

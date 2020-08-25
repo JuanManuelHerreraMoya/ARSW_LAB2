@@ -142,9 +142,9 @@ public class ControlFrame extends JFrame {
                 synchronized (immortals){
                     for (Immortal im: immortals ) {
                         im.pausarPelea();
+                        im.setAlive(false);
                     }
                     immortals.notifyAll();
-                    btnPauseAndCheck.setEnabled(false);
                     btnResume.setEnabled(false);
                 }
             }

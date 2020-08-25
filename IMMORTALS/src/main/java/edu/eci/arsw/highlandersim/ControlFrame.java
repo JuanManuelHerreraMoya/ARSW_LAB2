@@ -94,30 +94,30 @@ public class ControlFrame extends JFrame {
                     }
 
                     for (Immortal im : immortals) {
-                        System.out.println("Entre y suma es: "+ sum);
+                        //System.out.println("Entre y suma es: "+ sum);
                         sum += im.getHealth();
                     }
                     immortals.notifyAll();
                 }
                 statisticsLabel.setText("<html>"+immortals.toString()+"<br>Health sum:"+ sum);
                 System.out.println("La vida total es:  "+sum);
-
-
             }
         });
         toolBar.add(btnPauseAndCheck);
 
         JButton btnResume = new JButton("Resume");
-
         btnResume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * IMPLEMENTAR
-                 */
 
-            }
+                synchronized (immortals){
+                    for (Immortal im:immortals){
+                        im.renudarJuego();
+                        //System.out.println("Entre a reanudar");
+                    }
+                    immortals.notifyAll();
+                }
+             }
         });
-
         toolBar.add(btnResume);
 
         JLabel lblNumOfImmortals = new JLabel("num. of immortals:");

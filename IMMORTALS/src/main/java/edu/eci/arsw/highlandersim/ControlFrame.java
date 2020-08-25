@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.JScrollBar;
 
 public class ControlFrame extends JFrame {
@@ -78,6 +79,7 @@ public class ControlFrame extends JFrame {
                     }
                 }
 
+
                 btnStart.setEnabled(false);
 
             }
@@ -96,6 +98,7 @@ public class ControlFrame extends JFrame {
                     for (Immortal im : immortals) {
                         //System.out.println("Entre y suma es: "+ sum);
                         sum += im.getHealth();
+                        //System.out.println(im.getHealth()+" ;"+im);
                     }
                     immortals.notifyAll();
                 }
@@ -120,6 +123,7 @@ public class ControlFrame extends JFrame {
         });
         toolBar.add(btnResume);
 
+        toolBar.add(btnResume);
         JLabel lblNumOfImmortals = new JLabel("num. of immortals:");
         toolBar.add(lblNumOfImmortals);
 
@@ -131,6 +135,20 @@ public class ControlFrame extends JFrame {
         JButton btnStop = new JButton("STOP");
         btnStop.setForeground(Color.RED);
         toolBar.add(btnStop);
+
+        btnStop.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                synchronized (immortals){
+                    for (Immortal im: immortals ) {
+                        im.pausarPelea();
+                    }
+                    immortals.notifyAll();
+                    btnPauseAndCheck.setEnabled(false);
+                    btnResume.setEnabled(false);
+                }
+            }
+        });
 
         scrollPane = new JScrollPane();
         contentPane.add(scrollPane, BorderLayout.CENTER);
@@ -152,7 +170,12 @@ public class ControlFrame extends JFrame {
         try {
             int ni = Integer.parseInt(numOfImmortals.getText());
 
-            List<Immortal> il = new LinkedList<Immortal>();
+            /*
+            LinkedList<Immortal>(); esta es la lista que estaba usando por defecto, la cambie por CopyOnWriteArrayList<>();
+            porque esta ya es una lista segura para procesos paralelos.
+             */
+
+            List<Immortal> il = new CopyOnWriteArrayList<>();
 
             for (int i = 0; i < ni; i++) {
                 Immortal i1 = new Immortal("im" + i, il, DEFAULT_IMMORTAL_HEALTH, DEFAULT_DAMAGE_VALUE,ucb);

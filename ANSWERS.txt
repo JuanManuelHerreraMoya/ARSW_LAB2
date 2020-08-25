@@ -1,0 +1,23 @@
+10. An annoying element for the simulation is that at a certain point 
+	in it there are few living 'immortals' making failed fights with 'immortals' already dead.
+	It is necessary to suppress the immortal dead of the simulation as they die.
+	
+	1. Analyzing the simulation operation scheme, could this create a race condition?
+	Implement the functionality, run the simulation and see what problem arises 
+	when there are many 'immortals' in it. Write your conclusions about it in the file ANSWERS.txt.
+	
+	Rta:Al suprimir los muertos tendrias 2 problemas principales, el primero es con la lista,
+		y esto, generaria condicines de carrera, por que cuando se elimina el hilo puede pasar 
+		que otro hilo quiere acceder a este al mismo tiempo, y el segundo es que cuando el hilo se ha eliminado de la lista	
+		y no ha sido controlado o detenido, si sigue haciendo uso de los recursos compartidos afectara el programa	
+		porque se seguira ejecutando a pesar de haber sido eliminado y afectara procesos de otros hilos, generando
+		que se ejecuten exepciones y dejando otros procesos incompletos. 
+		
+	2. Correct the previous problem WITHOUT using synchronization, since making access to the 
+	shared list of immortals sequential would make simulation extremely slow. 
+	
+	Rta: En el anterior punto implemente esta solucion sincronizando listas, y note que hubo un problema con la vida
+	     alparecer la variable healt muta cuando elimino guerreros en immortal, ahora, para solucionar el primer
+		 problema uso un tipo de lista en java que ya es segura (CopyOnWriteArrayList<>()), ahora para resolver el valor
+		 de healt intentare usar o variables atomicas o volatil, en este caso usare una variable atomica ya que usamos varios hilos.
+	

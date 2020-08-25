@@ -44,13 +44,21 @@ Once the problem is corrected, rectify that the program continues to function co
 ![run](imagenes/10000Jugadores.jpg)
 
 
-10- An annoying element for the simulation is that at a certain point in it there are few living 'immortals' making failed fights with 'immortals' already dead. It is necessary to suppress the immortal dead of the simulation as they die. 
+10. An annoying element for the simulation is that at a certain point in it there are few living 'immortals' making failed fights with 'immortals' already dead. It is necessary to suppress the immortal dead of the simulation as they die. 
 
-    1. Analyzing the simulation operation scheme, could this create a race condition? Implement the functionality, run the simulation and see what problem arises when there are        many 'immortals' in it. Write your conclusions about it in the file ANSWERS.txt. 
+    + Analyzing the simulation operation scheme, could this create a race condition? Implement the functionality, run the simulation and see what problem arises when there are        many 'immortals' in it. Write your conclusions about it in the file ANSWERS.txt. 
     
-    NOTA: Estas respues se encuentran [aquí](https://github.com/JuanManuelHerreraMoya/ARWS_LAB2/blob/master/ANSWERS) o en el archivo ASNWERS.txt que esta al principio.
-    
-    2. Correct the previous problem WITHOUT using synchronization, since making access to the shared list of immortals sequential would make simulation extremely slow. 
+    + Correct the previous problem WITHOUT using synchronization, since making access to the shared list of immortals sequential would make simulation extremely slow. 
+
+NOTA: Estas respues se encuentran [aquí](https://github.com/JuanManuelHerreraMoya/ARWS_LAB2/blob/master/ANSWERS) o en el archivo ASNWERS.txt que esta al principio.
+
+De acuerdo a lo que plantemos en ANSWERS.txt, cambiamos el run ya que usamos una lista concurrente que provee java, entonces ya no necesitamos sincronizar pero si comprobar que los jugadores esten vivos, para ello si usamos variables atomicas.
+
+![run](imagenes/runIM.PNG)
+_____________________________________________________________________
+
+Aca vemos como healt paso a ser una variable atomica y de paso revisa que los jugadores esten vivos, con el fin de que al ser eliminados de la lista no afecte esta variable.
+![run](imagenes/fight.PNG)
 
 _____________________________________________________________________
 

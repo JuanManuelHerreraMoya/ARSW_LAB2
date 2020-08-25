@@ -62,6 +62,12 @@ Aca vemos como healt paso a ser una variable atomica y de paso revisa que los ju
 
 _____________________________________________________________________
 
+11. To finish, implement the STOP option.
+
+Detenemos los hilos y desactivamos el boton de resume, para que al darle en pause and check pueda ve los resultados si no lo oprimio con anterioridad
+
+![run](imagenes/stop.PNG)
+
 ## Grade Criteria
 The deliver of this workshop should be a link to GitHub repository where the README file contains all the answers (you can use images to support your solution development) and the source code is the solution.
 

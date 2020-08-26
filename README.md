@@ -68,6 +68,16 @@ Detenemos los hilos y desactivamos el boton de resume, para que al darle en paus
 
 ![run](imagenes/stop.PNG)
 
+12. Pruebas: Para ejecutar las pruebas hay 2 opciones.
+    
+    + Ejecutandola con mvn desde consola
+    
+    ![run](imagenes/pruebaMvn.PNG)
+    
+    + Ejecutando las pruebas con la interfaz de intellij
+    
+    ![run](imagenes/pruebasDer.PNG)
+
 ## Grade Criteria
 The deliver of this workshop should be a link to GitHub repository where the README file contains all the answers (you can use images to support your solution development) and the source code is the solution.
 

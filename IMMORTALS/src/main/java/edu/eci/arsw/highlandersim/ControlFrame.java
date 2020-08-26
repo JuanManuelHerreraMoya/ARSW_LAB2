@@ -78,10 +78,7 @@ public class ControlFrame extends JFrame {
                         im.start();
                     }
                 }
-
-
                 btnStart.setEnabled(false);
-
             }
         });
         toolBar.add(btnStart);

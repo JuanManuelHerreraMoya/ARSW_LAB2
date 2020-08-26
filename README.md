@@ -50,7 +50,7 @@ Once the problem is corrected, rectify that the program continues to function co
     
     + Correct the previous problem WITHOUT using synchronization, since making access to the shared list of immortals sequential would make simulation extremely slow. 
 
-NOTA: Estas respues se encuentran [aquí](https://github.com/JuanManuelHerreraMoya/ARWS_LAB2/blob/master/ANSWERS) o en el archivo ASNWERS.txt que esta al principio.
+NOTA: Estas respues se encuentran [aquí](https://github.com/JuanManuelHerreraMoya/ARSW_LAB2/blob/master/ANSWERS.txt) o en el archivo ASNWERS.txt que esta al principio.
 
 De acuerdo a lo que plantemos en ANSWERS.txt, cambiamos el run ya que usamos una lista concurrente que provee java, entonces ya no necesitamos sincronizar pero si comprobar que los jugadores esten vivos, para ello si usamos variables atomicas.
 

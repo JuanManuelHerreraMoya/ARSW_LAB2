@@ -70,11 +70,11 @@ Detenemos los hilos y desactivamos el boton de resume, para que al darle en paus
 
 12. Pruebas: Para ejecutar las pruebas hay 2 opciones.
     
-    + Ejecutandola con mvn desde consola
+    + Ejecutandola con mvn desde consola usando el comando: "mvn test", debemos recordar que debemos ejecutar este comando desde la carpeta de immortales.
     
     ![run](imagenes/pruebaMvn.PNG)
     
-    + Ejecutando las pruebas con la interfaz de intellij
+    + Ejecutando las pruebas con la interfaz de intellij, para ejecutarlo podemos ir a la clase test y darle play a la clase principal para ejecutarlo, o la segunda opcion dando       click derecho sobre las carpetas y seleccionando la opcion de ejecutar pruebas.
     
     ![run](imagenes/pruebasDer.PNG)
 
